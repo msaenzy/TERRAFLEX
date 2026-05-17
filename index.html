@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terraflex – Constructora</title>
+
+<!-- FAVICON SVG generado inline -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231e1c19'/%3E%3Cpolygon points='32,6 56,20 56,44 32,58 8,44 8,20' fill='none' stroke='%23d8d4cc' stroke-width='3.5'/%3E%3Crect x='26' y='36' width='12' height='16' fill='%23d8d4cc'/%3E%3Crect x='22' y='24' width='20' height='10' fill='%23d8d4cc' opacity='0.55'/%3E%3C/svg%3E">
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --pearl:      #f0ede6;
+  --pearl-dim:  #d8d4cc;
+  --silver:     #a8a49c;
+  --stone:      #706c66;
+  --charcoal:   #2e2b27;
+  --dark:       #1e1c19;
+  --deep:       #141210;
+  --panel:      #252320;
+  --card-bg:    #1a1816;
+  --font-d: 'Bebas Neue', sans-serif;
+  --font-b: 'Barlow', sans-serif;
+  --font-c: 'Barlow Condensed', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background:var(--deep); color:var(--pearl); font-family:var(--font-b); overflow-x:hidden; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 60px;
+  background:rgba(18,16,14,0.9);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(240,237,230,0.07);
+}
+.nav-logo img { height:42px; width:auto; filter:brightness(0) invert(1); opacity:0.88; }
+nav ul { list-style:none; display:flex; gap:34px; }
+nav a {
+  font-family:var(--font-c); font-size:0.8rem; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--silver); text-decoration:none;
+  transition:color .3s;
+}
+nav a:hover { color:var(--pearl); }
+
+/* ── S1 HERO ── */
+.hero { position:relative; width:100%; height:100vh; overflow:hidden; }
+.hero-carousel { display:flex; height:100%; transition:transform .95s cubic-bezier(.77,0,.18,1); }
+.hero-slide {
+  min-width:100%; height:100%;
+  background-size:cover; background-position:center; position:relative;
+}
+.hero-slide::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(18,16,14,.82) 0%,rgba(18,16,14,.3) 55%,transparent 100%);
+}
+.s1 { background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=80'); }
+.s2 { background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1800&q=80'); }
+.s3 { background-image:url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1800&q=80'); }
+.s4 { background-image:url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1800&q=80'); }
+
+.hero-content { position:absolute; bottom:13%; left:60px; z-index:2; max-width:700px; }
+.hero-tag {
+  font-family:var(--font-c); font-size:0.72rem; letter-spacing:5px;
+  text-transform:uppercase; color:var(--pearl-dim); margin-bottom:18px;
+  display:block; opacity:.75;
+}
+.hero-title {
+  font-family:var(--font-d);
+  font-size:clamp(4.5rem,9vw,9rem);
+  line-height:.9; color:var(--pearl); letter-spacing:2px;
+}
+.hero-title em { color:var(--pearl-dim); font-style:normal; opacity:.65; }
+.hero-sub {
+  margin-top:22px; font-size:1rem; font-weight:300;
+  color:rgba(240,237,230,.62); max-width:420px; line-height:1.65;
+}
+.hero-indicators { position:absolute; bottom:38px; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index:10; }
+.hero-dot { width:28px; height:2px; background:rgba(240,237,230,.22); cursor:pointer; transition:background .3s,width .3s; }
+.hero-dot.active { background:var(--pearl); width:52px; }
+.hero-arrow {
+  position:absolute; top:50%; transform:translateY(-50%); z-index:10;
+  background:rgba(240,237,230,.07); border:1px solid rgba(240,237,230,.18);
+  color:var(--pearl); width:48px; height:48px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-size:1.1rem; transition:background .3s;
+}
+.hero-arrow:hover { background:rgba(240,237,230,.16); }
+.hero-arrow.left { left:28px; }
+.hero-arrow.right { right:28px; }
+
+/* ── S2 BANNER ── */
+.banner {
+  width:100%; padding:20px 60px;
+  background:var(--pearl);
+  display:flex; justify-content:center; align-items:center; gap:28px;
+}
+.banner-text {
+  font-family:var(--font-d); font-size:1.5rem;
+  letter-spacing:6px; color:var(--deep); text-transform:uppercase; white-space:nowrap;
+}
+.banner-sep { width:5px; height:5px; background:var(--stone); transform:rotate(45deg); flex-shrink:0; }
+
+/* ── S3 VISION ── */
+.vision { display:grid; grid-template-columns:1fr 1fr; min-height:88vh; }
+.vision-video { position:relative; overflow:hidden; background:var(--deep); }
+.video-placeholder {
+  width:100%; height:100%;
+  background:url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1000&q=80') center/cover;
+  display:block;
+}
+.video-placeholder::after { content:''; position:absolute; inset:0; background:rgba(18,16,14,.25); }
+.play-btn {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2;
+  width:76px; height:76px; border:2px solid rgba(240,237,230,.65); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; background:rgba(18,16,14,.45); backdrop-filter:blur(4px);
+  transition:background .3s,border-color .3s;
+}
+.play-btn:hover { background:rgba(240,237,230,.14); border-color:var(--pearl); }
+.play-btn svg { width:24px; height:24px; fill:var(--pearl); margin-left:4px; }
+
+.vision-text {
+  background:var(--panel); display:flex; flex-direction:column;
+  justify-content:center; padding:72px 64px;
+}
+.vision-box {
+  background:var(--deep); padding:36px 40px; margin-bottom:36px;
+  border-left:3px solid var(--pearl-dim);
+}
+.vision-box h3 {
+  font-family:var(--font-d); font-size:2.7rem; letter-spacing:2px;
+  color:var(--pearl); line-height:1; margin-bottom:10px;
+}
+.vision-box p { font-size:0.78rem; color:var(--silver); font-weight:300; letter-spacing:2px; text-transform:uppercase; }
+.vision-desc { color:rgba(240,237,230,.72); font-size:.94rem; line-height:1.8; font-weight:300; margin-bottom:36px; }
+.btn-cta {
+  display:inline-block; padding:14px 36px; background:transparent;
+  border:1.5px solid var(--pearl-dim); color:var(--pearl);
+  font-family:var(--font-c); font-size:.82rem; letter-spacing:3px;
+  text-transform:uppercase; cursor:pointer; text-decoration:none;
+  transition:background .3s,color .3s; align-self:flex-start;
+}
+.btn-cta:hover { background:var(--pearl); color:var(--deep); }
+
+/* ── S4 SERVICIOS ── */
+.services { position:relative; padding:100px 60px; background:var(--dark); overflow:hidden; }
+.svc-bg {
+  position:absolute; inset:0;
+  background:url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=1800&q=50') center/cover no-repeat;
+  opacity:.05; z-index:0;
+}
+.svc-inner { position:relative; z-index:1; }
+.sec-label {
+  font-family:var(--font-c); font-size:.72rem; letter-spacing:5px;
+  text-transform:uppercase; color:var(--pearl-dim); display:block;
+  margin-bottom:12px; opacity:.7;
+}
+.sec-title {
+  font-family:var(--font-d); font-size:clamp(2.8rem,5vw,5rem);
+  line-height:.95; color:var(--pearl); margin-bottom:60px;
+}
+.sec-title span { opacity:.6; }
+
+.svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.svc-card { position:relative; overflow:hidden; cursor:pointer; background:var(--card-bg); }
+.svc-card img {
+  width:100%; height:295px; object-fit:cover; display:block;
+  transition:transform .7s,filter .5s;
+  filter:brightness(.62) grayscale(.18);
+}
+.svc-card:hover img { transform:scale(1.06); filter:brightness(.8) grayscale(0); }
+.svc-info {
+  padding:22px 20px 26px; background:var(--card-bg);
+  border-top:1.5px solid rgba(240,237,230,.1);
+}
+.svc-name { font-family:var(--font-c); font-size:1.05rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--pearl); margin-bottom:5px; }
+.svc-desc { font-size:.77rem; color:var(--silver); font-weight:300; line-height:1.55; }
+.svc-nav { display:flex; justify-content:center; gap:14px; margin-top:38px; }
+.svc-btn {
+  width:50px; height:50px; border:1.5px solid rgba(240,237,230,.28);
+  background:transparent; color:var(--pearl); font-size:1.1rem;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:background .3s,border-color .3s;
+}
+.svc-btn:hover { background:rgba(240,237,230,.1); border-color:var(--pearl); }
+
+/* ── S5 NOSOTROS ── */
+.about { display:grid; grid-template-columns:1fr 1fr; min-height:75vh; background:var(--deep); }
+.about-left { padding:80px 60px; display:flex; flex-direction:column; justify-content:center; }
+.about-brand { font-family:var(--font-c); font-size:.7rem; letter-spacing:3px; text-transform:uppercase; color:var(--stone); margin-bottom:28px; }
+.about-intro { font-size:.93rem; color:rgba(240,237,230,.62); font-weight:300; line-height:1.85; max-width:490px; margin-top:20px; }
+.about-right { display:grid; grid-template-rows:1fr 1fr; gap:3px; }
+.about-img {
+  background-size:cover; background-position:center; position:relative; overflow:hidden;
+  filter:grayscale(.12); transition:filter .5s;
+}
+.about-img:hover { filter:grayscale(0); }
+.about-img::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(18,16,14,.45),transparent 60%); }
+.ai1 { background-image:url('https://images.unsplash.com/photo-1590496793929-36417d3117de?w=900&q=80'); }
+.ai2 { background-image:url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=900&q=80'); }
+
+/* ── S6 REVIEWS ── */
+.reviews {
+  position:relative; min-height:70vh; padding:80px 60px;
+  background:var(--panel); overflow:hidden;
+  display:grid; grid-template-columns:1fr 1.2fr; gap:80px; align-items:center;
+}
+.rev-bg {
+  position:absolute; inset:0;
+  background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=45') center/cover no-repeat;
+  opacity:.05; z-index:0;
+}
+.rev-left { position:relative; z-index:1; }
+.rev-divider { width:48px; height:2px; background:var(--pearl-dim); margin-top:22px; opacity:.45; }
+.rev-right {
+  position:relative; z-index:1; height:460px; overflow:hidden;
+  mask-image:linear-gradient(to bottom,transparent 0%,black 8%,black 92%,transparent 100%);
+}
+.rev-track { display:flex; flex-direction:column; gap:18px; animation:scrollUp 22s linear infinite; }
+.rev-track:hover { animation-play-state:paused; }
+@keyframes scrollUp { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+.rev-card {
+  background:rgba(240,237,230,.03); border:1px solid rgba(240,237,230,.08);
+  border-left:2px solid rgba(240,237,230,.32); padding:26px 30px;
+}
+.rev-stars { color:var(--pearl-dim); font-size:.8rem; margin-bottom:10px; letter-spacing:3px; opacity:.65; }
+.rev-text { font-size:.85rem; line-height:1.72; color:rgba(240,237,230,.72); font-weight:300; font-style:italic; }
+.rev-author { margin-top:16px; font-family:var(--font-c); font-size:.72rem; letter-spacing:2px; text-transform:uppercase; color:var(--pearl); }
+.rev-role { font-size:.68rem; color:var(--stone); margin-top:3px; }
+
+/* ── S7 CONTACTO ── */
+.contact { background:var(--dark); padding:100px 60px 80px; }
+.contact-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:80px; align-items:start; }
+.contact-desc { color:rgba(240,237,230,.6); font-size:.93rem; line-height:1.75; font-weight:300; margin-bottom:40px; max-width:440px; }
+.btn-wa {
+  display:inline-flex; align-items:center; gap:14px;
+  padding:18px 42px; background:var(--pearl); color:var(--deep);
+  font-family:var(--font-c); font-size:.88rem; letter-spacing:3px;
+  text-transform:uppercase; text-decoration:none; font-weight:700;
+  transition:background .3s;
+}
+.btn-wa:hover { background:var(--pearl-dim); }
+.btn-wa svg { width:22px; height:22px; fill:var(--deep); flex-shrink:0; }
+
+.contact-right { display:flex; flex-direction:column; gap:30px; }
+.contact-imgs { display:grid; grid-template-columns:1fr 1fr; gap:4px; height:220px; }
+.ci1 { background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80') center/cover; filter:grayscale(.15); }
+.ci2 { background:url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=700&q=80') center/cover; filter:grayscale(.15); }
+.contact-info { display:flex; flex-direction:column; gap:16px; }
+.contact-item { display:flex; gap:16px; align-items:flex-start; }
+.c-icon {
+  width:36px; height:36px; border:1px solid rgba(240,237,230,.16);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.c-icon svg { width:15px; height:15px; fill:var(--pearl-dim); opacity:.7; }
+.c-text { font-size:.83rem; color:rgba(240,237,230,.62); line-height:1.6; }
+.c-label { font-family:var(--font-c); font-size:.67rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--pearl-dim); margin-bottom:3px; opacity:.78; }
+
+/* FOOTER */
+footer {
+  background:var(--deep); padding:26px 60px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-top:1px solid rgba(240,237,230,.06);
+}
+.footer-logo img { height:32px; filter:brightness(0) invert(1); opacity:.62; }
+footer p { font-size:.69rem; color:var(--stone); letter-spacing:1px; }
+
+/* ── REVEAL BIDIRECCIONAL ── */
+.reveal {
+  opacity:0; transition:opacity .72s ease, transform .72s ease;
+}
+.reveal.from-below { transform:translateY(38px); }
+.reveal.from-above { transform:translateY(-38px); }
+.reveal.visible    { opacity:1; transform:translateY(0); }
+.reveal.d1 { transition-delay:.1s; }
+.reveal.d2 { transition-delay:.22s; }
+.reveal.d3 { transition-delay:.34s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png" alt="Terraflex" id="navLogoImg"></div>
+  <ul>
+    <li><a href="#hero">Inicio</a></li>
+    <li><a href="#vision">Visión</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#reviews">Clientes</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- S1 HERO -->
+<section class="hero" id="hero">
+  <div class="hero-carousel" id="heroCarousel">
+    <div class="hero-slide s1"></div>
+    <div class="hero-slide s2"></div>
+    <div class="hero-slide s3"></div>
+    <div class="hero-slide s4"></div>
+  </div>
+  <!-- S1 HERO 
+  <div class="hero-content">
+    <span class="hero-tag">Constructora · Ecuador · Desde 2008</span>
+    <h1 class="hero-title">CONSTRUIMOS<br><em>EL FUTURO</em></h1>
+    <p class="hero-sub">Obras civiles, residenciales e industriales. Excelencia en cada proyecto, con visión de empresa del siglo XXI.</p>
+  </div>
+  -->
+  <button class="hero-arrow left" id="hPrev">&#8592;</button>
+  <button class="hero-arrow right" id="hNext">&#8594;</button>
+  <div class="hero-indicators" id="hDots"></div>
+</section>
+
+<!-- S2 BANNER -->
+<section class="banner">
+    <!-- S2 BANNER 
+  <span class="banner-text">Continuamos con el trabajo</span>
+  <div class="banner-sep"></div>
+  -->
+  <span class="banner-text">Terraflex · Construimos confianza, proyectamos futuro</span>
+   <!-- S2 BANNER 
+  <div class="banner-sep"></div>
+  <span class="banner-text">Calidad · Compromiso · Futuro</span>
+  -->
+</section>
+
+<!-- S3 VISION -->
+<section class="vision" id="vision">
+  <div class="vision-video">
+    <div class="video-placeholder"></div>
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+  </div>
+  <div class="vision-text">
+    <div class="vision-box reveal from-below">
+      <h3>Quiénes somos</h3>
+      <p>Constructora Terraflex · 2024 y más allá</p>
+    </div>
+    <p class="vision-desc reveal from-below d1">
+Constructora Terraflex S.A., fundada en 2024 en Guayaquil, Ecuador, nace con la visión de convertirse en un símbolo de progreso, integridad y resiliencia en el sector de la construcción.
+    </p>
+    <a href="#contact" class="btn-cta reveal from-below d2">Contáctenos</a>
+  </div>
+</section>
+
+<!-- S4 SERVICIOS -->
+<section class="services" id="services">
+  <div class="svc-bg"></div>
+  <div class="svc-inner">
+    <span class="sec-label reveal from-below">Lo que hacemos</span>
+    <h2 class="sec-title reveal from-below d1">NUESTROS<br><span>SERVICIOS</span></h2>
+    <div>
+      <div class="svc-grid" id="svcGrid"></div>
+      <div class="svc-nav">
+        <button class="svc-btn" id="svcPrev">&#8592;</button>
+        <button class="svc-btn" id="svcNext">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 NOSOTROS -->
+<section class="about" id="about">
+  <div class="about-left">
+    <span class="sec-label reveal from-below">Quiénes somos</span>
+    <h2 class="sec-title reveal from-below d1">CONS<span>TRUCTORA</span><br>TERRAFLEX</h2>
+    <p class="about-brand reveal from-below d2">Guayaquil, Ecuador · 15 años de trayectoria</p>
+    <p class="about-intro reveal from-below d3">
+      Terraflex nace del compromiso de transformar el paisaje urbano e industrial del Ecuador. Con más de 15 años de experiencia, hemos ejecutado proyectos residenciales, comerciales e industriales de alta envergadura, siempre bajo los más rigurosos estándares de calidad, puntualidad y responsabilidad.
+    </p>
+  </div>
+  <div class="about-right">
+    <div class="about-img ai1"></div>
+    <div class="about-img ai2"></div>
+  </div>
+</section>
+
+<!-- S6 REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="rev-bg"></div>
+  <div class="rev-left">
+    <span class="sec-label reveal from-below">Testimonios</span>
+    <h2 class="sec-title reveal from-below d1">LO QUE DICEN<br><span>NUESTROS</span><br>CLIENTES</h2>
+    <div class="rev-divider reveal from-below d2"></div>
+  </div>
+  <div class="rev-right">
+    <div class="rev-track" id="revTrack"></div>
+  </div>
+</section>
+
+<!-- S7 CONTACTO -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <span class="sec-label reveal from-below">Hablemos</span>
+      <h2 class="sec-title reveal from-below d1">CONTÁC<span>TENOS</span></h2>
+      <p class="contact-desc reveal from-below d2">
+        Cuéntanos sobre tu proyecto. Nuestro equipo está listo para asesorarte y darte la mejor solución constructiva para tus necesidades.
+      </p>
+      <a href="https://api.whatsapp.com/send/?phone=593981749420&text&type=phone_number&app_absent=0"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-wa reveal from-below d3">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribenos por WhatsApp
+      </a>
+    </div>
+    <div class="contact-right reveal from-below d1">
+      <div class="contact-imgs">
+        <div class="ci1"></div>
+        <div class="ci2"></div>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div class="c-text"><div class="c-label">Dirección</div>Hurtado 205 y Machala. Edificio Alcár. 4to piso </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div class="c-text"><div class="c-label">Teléfono</div>(+593) 98-174-9420</div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div class="c-text"><div class="c-label">Correo</div>clientes@constructoraterraflex.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div>
+          <div class="c-text"><div class="c-label">Horario</div>Lunes a Viernes 08:00 – 18:00 · Sábados 09:00 – 13:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png" alt="Terraflex" id="footerLogoImg"></div>
+  <p>© 2024 Constructora Terraflex. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+// Cargar logo real desde archivo local (funciona si se abre directamente)
+(function(){
+  const logoSrc = '1779047376079_image.png'; // mismo directorio que el HTML
+  document.querySelectorAll('#navLogoImg, #footerLogoImg').forEach(img => {
+    img.src = logoSrc;
+    img.onerror = function(){
+      // fallback: texto si no carga la imagen
+      this.style.display = 'none';
+      const span = document.createElement('span');
+      span.textContent = 'TERRAFLEX';
+      span.style.cssText = "font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:4px;color:#f0ede6;";
+      this.parentNode.appendChild(span);
+    };
+  });
+})();
+
+// ── HERO ──────────────────────────────────────────────
+const hC = document.getElementById('heroCarousel');
+const hD = document.getElementById('hDots');
+const hSlides = hC.querySelectorAll('.hero-slide');
+let hCur = 0, hTimer;
+
+hSlides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'hero-dot' + (i===0?' active':'');
+  d.addEventListener('click', () => hGo(i));
+  hD.appendChild(d);
+});
+function hGo(n){
+  hCur = (n + hSlides.length) % hSlides.length;
+  hC.style.transform = `translateX(-${hCur*100}%)`;
+  document.querySelectorAll('.hero-dot').forEach((d,i) => d.classList.toggle('active', i===hCur));
+}
+function startH(){ hTimer = setInterval(()=>hGo(hCur+1), 5500); }
+document.getElementById('hPrev').onclick = ()=>{ hGo(hCur-1); clearInterval(hTimer); startH(); };
+document.getElementById('hNext').onclick = ()=>{ hGo(hCur+1); clearInterval(hTimer); startH(); };
+startH();
+
+// ── SERVICIOS (sin auto-avance) ───────────────────────
+const svcs = [
+  { name:'Obras Civiles Integrales',  desc:'Construcción de viviendas, edificios y obras industriales a gran escala.',  img:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80' },
+  { name:'Proyectos Residenciales',   desc:'Casas, conjuntos habitacionales y urbanizaciones de alta calidad.',          img:'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=700&q=80' },
+  { name:'Obras Industriales',        desc:'Bodegas, plantas productivas y complejos logísticos e industriales.',        img:'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=700&q=80' },
+  { name:'Remodelaciones',            desc:'Renovación integral de espacios comerciales, oficinas y residencias.',       img:'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=700&q=80' },
+  { name:'Vialidad y Obras Públicas', desc:'Carreteras, puentes, infraestructura pública y pavimentación.',              img:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=700&q=80' },
+  { name:'Consultoría y Supervisión', desc:'Asesoría técnica, dirección de proyectos y control de calidad en obra.',    img:'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=700&q=80' },
+];
+const svcG = document.getElementById('svcGrid');
+let svcP = 0;
+function renderSvc(){
+  svcG.innerHTML = '';
+  svcs.slice(svcP*3, svcP*3+3).forEach(s => {
+    const c = document.createElement('div');
+    c.className = 'svc-card';
+    c.innerHTML = `<img src="${s.img}" alt="${s.name}" loading="lazy">
+      <div class="svc-info"><div class="svc-name">${s.name}</div><div class="svc-desc">${s.desc}</div></div>`;
+    svcG.appendChild(c);
+  });
+}
+renderSvc();
+document.getElementById('svcPrev').onclick = ()=>{ svcP=(svcP+1)%2; renderSvc(); };
+document.getElementById('svcNext').onclick = ()=>{ svcP=(svcP+1)%2; renderSvc(); };
+
+// ── REVIEWS ───────────────────────────────────────────
+const revs = [
+  { t:'Excelente trabajo en la construcción de nuestra sede corporativa. Terraflex cumplió plazos y superó nuestras expectativas de calidad.', a:'Carlos Mendoza',        r:'Gerente General · Industrias del Pacífico' },
+  { t:'El profesionalismo del equipo y la precisión en cada detalle hacen de Terraflex el aliado constructor ideal para cualquier proyecto.',  a:'Andrea Villavicencio',  r:'Directora de Proyectos · Inmobiliaria Cordillera' },
+  { t:'Nos entregaron el complejo residencial antes del plazo pactado, con acabados de primera clase. Los recomiendo sin dudarlo.',             a:'Roberto Suárez',        r:'Propietario · Conjunto Villa del Sol' },
+  { t:'La transparencia en costos y la comunicación constante durante la obra fue lo que más valoramos. Empresa seria y comprometida.',        a:'Patricia Torres',       r:'Administradora · Centro Comercial El Paseo' },
+  { t:'Obra industrial entregada con todos los estándares técnicos requeridos. Terraflex entiende las necesidades del sector productivo.',     a:'Ing. Mario Castillo',   r:'Jefe de Planta · AgroEcuador S.A.' },
+  { t:'Renovamos nuestras oficinas principales y el resultado fue impecable. Rapidez, limpieza y calidad en cada etapa del proceso.',          a:'Sofía Herrera',         r:'CEO · Soluciones Digitales Ecuador' },
+];
+const rt = document.getElementById('revTrack');
+[...revs,...revs].forEach(r=>{
+  const c = document.createElement('div');
+  c.className = 'rev-card';
+  c.innerHTML = `<div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <p class="rev-text">"${r.t}"</p>
+    <div class="rev-author">${r.a}</div><div class="rev-role">${r.r}</div>`;
+  rt.appendChild(c);
+});
+
+// ── SCROLL REVEAL BIDIRECCIONAL ───────────────────────
+const els = document.querySelectorAll('.reveal');
+let lastY = window.scrollY;
+
+// Inicializar todos como from-below
+els.forEach(el => el.classList.add('from-below'));
+
+const obs = new IntersectionObserver(entries => {
+  const goingDown = window.scrollY >= lastY;
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      // asignar dirección según sentido del scroll
+      e.target.classList.remove('from-below','from-above');
+      e.target.classList.add(goingDown ? 'from-below' : 'from-above');
+      // doble raf para forzar reflow antes de añadir visible
+      requestAnimationFrame(()=>requestAnimationFrame(()=>e.target.classList.add('visible')));
+    } else {
+      e.target.classList.remove('visible');
+      // preparar para la próxima entrada
+      e.target.classList.remove('from-below','from-above');
+      e.target.classList.add(goingDown ? 'from-above' : 'from-below');
+    }
+  });
+  lastY = window.scrollY;
+}, { threshold: 0.1 });
+
+window.addEventListener('scroll', ()=>{ lastY = window.scrollY; }, { passive:true });
+els.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
