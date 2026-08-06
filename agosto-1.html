@@ -1,0 +1,339 @@
+<!-- ==========================================
+     1. ESTILOS DE LA SECCIÓN (MISIÓN Y VISIÓN)
+     ========================================== -->
+<style>
+/* Importación de fuentes idéntica a la página principal */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@400;700&display=swap');
+
+/* Contenedor Raíz encapsulado */
+.tf-mision-vision {
+  --pearl:      #f0ede6;
+  --pearl-dim:  #d8d4cc;
+  --silver:     #a8a49c;
+  --stone:      #706c66;
+  --charcoal:   #2e2b27;
+  --dark:       #1e1c19;
+  --deep:       #141210;
+  --panel:      #252320;
+  --card-bg:    #1a1816;
+  --font-d: 'Bebas Neue', sans-serif;
+  --font-b: 'Barlow', sans-serif;
+  --font-c: 'Barlow Condensed', sans-serif;
+
+  background: var(--deep) !important;
+  color: var(--pearl) !important;
+  font-family: var(--font-b) !important;
+  position: relative !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Reset de márgenes y box-sizing */
+.tf-mision-vision *, 
+.tf-mision-vision *::before, 
+.tf-mision-vision *::after { 
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── CABECERA / HERO INTERNO ── */
+.tf-mision-vision .mv-hero {
+  position: relative !important;
+  padding: 120px 5% 80px 5% !important;
+background:
+linear-gradient(135deg, rgba(15,15,15,.85), rgba(15,15,15,.55)),
+url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=2000&q=80')
+center/cover no-repeat;
+}
+
+.tf-mision-vision .sec-label {
+  font-family: var(--font-c) !important;
+  font-size: .75rem !important;
+  letter-spacing: 5px !important;
+  text-transform: uppercase !important;
+  color: var(--pearl-dim) !important;
+  display: block !important;
+  margin-bottom: 12px !important;
+  opacity: .8 !important;
+}
+
+.tf-mision-vision .sec-title {
+  font-family: var(--font-d) !important;
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem) !important;
+  line-height: .95 !important;
+  color: var(--pearl) !important;
+}
+
+/* ── GRID PRINCIPAL DE MISIÓN Y VISIÓN ── */
+.tf-mision-vision .mv-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px !important;
+  padding: 80px 5% !important;
+}
+
+.tf-mision-vision .mv-card {
+  background: var(--panel) !important;
+  border: 1px solid rgba(240,237,230,0.08) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  position: relative !important;
+  transition: transform 0.4s ease, border-color 0.4s ease !important;
+}
+
+.tf-mision-vision .mv-card:hover {
+  transform: translateY(-6px) !important;
+  border-color: var(--pearl-dim) !important;
+}
+
+.tf-mision-vision .mv-card-img {
+  width: 100% !important;
+  height: 260px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  position: relative !important;
+  filter: brightness(0.82) contrast(1.05) !important;
+  transition: filter 0.4s ease !important;
+}
+
+.tf-mision-vision .mv-card:hover .mv-card-img {
+  filter: brightness(0.95) contrast(1.1) !important;
+}
+
+/* MISIÓN: Operario en obra civil */
+.tf-mision-vision .img-mision {
+  background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&q=80') !important;
+}
+
+/* NUEVA IMAGEN VISIÓN: Infraestructura de alta escala proyectada al futuro */
+.tf-mision-vision .img-vision {
+  background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80') !important;
+}
+
+.tf-mision-vision .mv-card-body {
+  padding: 40px 35px !important;
+  position: relative !important;
+  flex-grow: 1 !important;
+  border-top: 3px solid var(--pearl-dim) !important;
+}
+
+.tf-mision-vision .mv-card h3 {
+  font-family: var(--font-d) !important;
+  font-size: 2.3rem !important;
+  letter-spacing: 2px !important;
+  color: var(--pearl) !important;
+  margin-bottom: 15px !important;
+  line-height: 1 !important;
+}
+
+.tf-mision-vision .mv-card p {
+  color: rgba(240,237,230,0.75) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.8 !important;
+}
+
+/* ── SECCIÓN DE PILARES / VALORES ── */
+.tf-mision-vision .mv-pillars {
+  background: var(--dark) !important;
+  padding: 80px 5% !important;
+}
+
+.tf-mision-vision .pillars-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 25px !important;
+  margin-top: 45px !important;
+}
+
+.tf-mision-vision .pillar-item {
+  background: var(--card-bg) !important;
+  border: 1px solid rgba(240,237,230,0.06) !important;
+  overflow: hidden !important;
+  transition: transform 0.3s ease !important;
+}
+
+.tf-mision-vision .pillar-item:hover {
+  transform: translateY(-4px) !important;
+}
+
+.tf-mision-vision .pillar-img {
+  height: 160px !important;
+  width: 100% !important;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: brightness(0.75) !important;
+}
+
+.tf-mision-vision .p-img-1 { background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&q=80') !important; }
+.tf-mision-vision .p-img-2 { background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=700&q=80') !important; }
+
+/* NUEVA IMAGEN PROCESO EFICIENTE: Tecnología y control técnico en construcción */
+.tf-mision-vision .p-img-3 { background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=700&q=80') !important; }
+
+.tf-mision-vision .pillar-content {
+  padding: 25px !important;
+}
+
+.tf-mision-vision .pillar-category {
+  font-family: var(--font-c) !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: var(--silver) !important;
+  letter-spacing: 2px !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+  text-transform: uppercase !important;
+}
+
+.tf-mision-vision .pillar-item h4 {
+  font-family: var(--font-c) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: var(--pearl) !important;
+  margin-bottom: 8px !important;
+}
+
+.tf-mision-vision .pillar-item p {
+  font-size: 0.86rem !important;
+  color: var(--silver) !important;
+  line-height: 1.6 !important;
+}
+
+/* ── ANIMACIONES BIDIRECCIONALES (UP & DOWN SCROLL) ── */
+.tf-mision-vision .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.25, 1, 0.5, 1), transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.tf-mision-vision .reveal.reveal-left {
+  transform: translateX(-40px);
+}
+
+.tf-mision-vision .reveal.reveal-right {
+  transform: translateX(40px);
+}
+
+.tf-mision-vision .reveal.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ── MEDIA QUERIES ── */
+@media (max-width: 1024px) {
+  .tf-mision-vision .pillars-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 768px) {
+  .tf-mision-vision .mv-grid { grid-template-columns: 1fr !important; }
+  .tf-mision-vision .pillars-grid { grid-template-columns: 1fr !important; }
+  .tf-mision-vision .mv-card-body { padding: 30px 20px !important; }
+  .tf-mision-vision .reveal.reveal-left, 
+  .tf-mision-vision .reveal.reveal-right { transform: translateY(30px); }
+}
+</style>
+
+<!-- ==========================================
+     2. ESTRUCTURA HTML (CONTENIDO MISIÓN & VISIÓN)
+     ========================================== -->
+<div class="tf-mision-vision">
+
+  <!-- Encabezado de la Sección -->
+  <header class="mv-hero">
+    <span class="sec-label reveal">Propósito Organizacional</span>
+    <h1 class="sec-title reveal">MISIÓN Y VISIÓN</h1>
+  </header>
+
+  <!-- Misión y Visión -->
+  <section class="mv-grid">
+    
+    <!-- Bloque Misión -->
+    <article class="mv-card reveal reveal-left">
+      <div class="mv-card-img img-mision"></div>
+      <div class="mv-card-body">
+        <h3>Nuestra Misión</h3>
+        <p>
+En Terraflex S.A., nuestra misión es ofrecer soluciones integrales en ingeniería civil, garantizando calidad, seguridad y eficiencia en cada uno de nuestros proyectos. Nos comprometemos con el desarrollo sostenible, el cumplimiento riguroso de plazos y presupuestos, y la satisfacción total de nuestros clientes, aportando conocimiento técnico y experiencia en cada obra que emprendemos.        </p>
+      </div>
+    </article>
+
+    <!-- Bloque Visión -->
+    <article class="mv-card reveal reveal-right">
+      <div class="mv-card-img img-vision"></div>
+      <div class="mv-card-body">
+        <h3>Nuestra Visión</h3>
+        <p>
+Consolidarnos como una empresa líder en ingeniería civil a nivel nacional, reconocida por la calidad de nuestras obras, la innovación en nuestros procesos y el cumplimiento riguroso de los más altos estándares técnicos y éticos.
+Buscamos aportar al desarrollo sostenible del país, generando infraestructura confiable que impulse el progreso y mejore la calidad de vida de las comunidades.        </p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Pilares Fundamentales -->
+  <section class="mv-pillars">
+    <span class="sec-label reveal">Lo que nos mueve</span>
+    <h2 class="sec-title reveal">PILARES ESTRATÉGICOS</h2>
+
+    <div class="pillars-grid">
+      
+      <div class="pillar-item reveal">
+        <div class="pillar-img p-img-1"></div>
+        <div class="pillar-content">
+          <span class="pillar-category">CALIDAD</span>
+          <h4>Rigor Técnico</h4>
+          <p>Aplicación rigurosa de normas de ingeniería e insumos de primera clase para obras duraderas.</p>
+        </div>
+      </div>
+
+      <div class="pillar-item reveal">
+        <div class="pillar-img p-img-2"></div>
+        <div class="pillar-content">
+          <span class="pillar-category">COMPROMISO</span>
+          <h4>Cumplimiento Estricto</h4>
+          <p>Garantía de cumplimiento en tiempos, presupuesto y especificaciones en cada fase del proyecto.</p>
+        </div>
+      </div>
+
+      <div class="pillar-item reveal">
+        <div class="pillar-img p-img-3"></div>
+        <div class="pillar-content">
+          <span class="pillar-category">INNOVACIÓN</span>
+          <h4>Proceso Eficiente</h4>
+          <p>Integración de soluciones modernas de construcción y optimización constante de procesos.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- ==========================================
+     3. DINÁMICA JS (ANIMACIÓN BIDIRECCIONAL SCROLL)
+     ========================================== -->
+<script>
+(() => {
+  // Observer para Scroll Up & Down
+  const observerMV = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { 
+    threshold: 0.15 
+  });
+
+  document.querySelectorAll('.tf-mision-vision .reveal').forEach(el => {
+    observerMV.observe(el);
+  });
+})();
+</script>

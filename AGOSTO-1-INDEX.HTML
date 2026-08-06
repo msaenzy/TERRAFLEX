@@ -1,0 +1,324 @@
+<!-- ==========================================
+     1. ESTILOS DE LA SECCIÓN (CSS AISLADO)
+     ========================================== -->
+<style>
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@400;700&display=swap');
+
+/* Contenedor Raíz para aislar los estilos del tema de WordPress */
+.tf-seccion-landing {
+  --pearl:      #f0ede6;
+  --pearl-dim:  #d8d4cc;
+  --silver:     #a8a49c;
+  --stone:      #706c66;
+  --charcoal:   #2e2b27;
+  --dark:       #1e1c19;
+  --deep:       #141210;
+  --panel:      #252320;
+  --card-bg:    #1a1816;
+  --font-d: 'Bebas Neue', sans-serif;
+  --font-b: 'Barlow', sans-serif;
+  --font-c: 'Barlow Condensed', sans-serif;
+
+  background: var(--deep) !important;
+  color: var(--pearl) !important;
+  font-family: var(--font-b) !important;
+  position: relative !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Reset de márgenes solo dentro de nuestra sección */
+.tf-seccion-landing *, 
+.tf-seccion-landing *::before, 
+.tf-seccion-landing *::after { 
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── S1 HERO ── */
+.tf-seccion-landing .hero { position: relative !important; width: 100% !important; height: 100vh !important; overflow: hidden !important; }
+.tf-seccion-landing .hero-carousel { display: flex !important; height: 100% !important; transition: transform .95s cubic-bezier(.77,0,.18,1) !important; margin: 0 !important; padding: 0 !important; }
+.tf-seccion-landing .hero-slide { min-width: 100% !important; height: 100% !important; background-size: cover !important; background-position: center !important; position: relative !important; }
+.tf-seccion-landing .hero-slide::after {
+  content: '' !important; position: absolute !important; inset: 0 !important;
+  background: linear-gradient(135deg,rgba(18,16,14,.82) 0%,rgba(18,16,14,.3) 55%,transparent 100%) !important;
+}
+.tf-seccion-landing .s1 { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=80') !important; }
+.tf-seccion-landing .s2 { background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1800&q=80') !important; }
+.tf-seccion-landing .s3 { background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1800&q=80') !important; }
+.tf-seccion-landing .s4 { background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1800&q=80') !important; }
+
+.tf-seccion-landing .hero-indicators { position: absolute !important; bottom: 38px !important; left: 50% !important; transform: translateX(-50%) !important; display: flex !important; gap: 10px !important; z-index: 10 !important; }
+.tf-seccion-landing .hero-dot { width: 28px !important; height: 2px !important; background: rgba(240,237,230,.22) !important; cursor: pointer !important; transition: background .3s, width .3s !important; }
+.tf-seccion-landing .hero-dot.active { background: var(--pearl) !important; width: 52px !important; }
+
+.tf-seccion-landing .hero-arrow {
+  position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 10 !important;
+  background: rgba(240,237,230,.07) !important; border: 1px solid rgba(240,237,230,.18) !important;
+  color: var(--pearl) !important; width: 48px !important; height: 48px !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  cursor: pointer !important; font-size: 1.1rem !important; transition: background .3s !important;
+}
+.tf-seccion-landing .hero-arrow.left { left: 20px !important; }
+.tf-seccion-landing .hero-arrow.right { right: 20px !important; }
+
+/* ── S2 BANNER ── */
+.tf-seccion-landing .banner { width: 100% !important; padding: 20px 5% !important; background: var(--pearl) !important; display: flex !important; justify-content: center !important; align-items: center !important; overflow: hidden !important; }
+.tf-seccion-landing .banner-text { font-family: var(--font-d) !important; font-size: 1.2rem !important; letter-spacing: 4px !important; color: var(--deep) !important; text-transform: uppercase !important; text-align: center !important; }
+
+/* ── S3 VISION ── */
+.tf-seccion-landing .vision { display: grid !important; grid-template-columns: 1fr 1fr !important; min-height: 88vh !important; }
+.tf-seccion-landing .vision-video { position: relative !important; overflow: hidden !important; background: var(--deep) !important; min-height: 400px !important; }
+.tf-seccion-landing .video-placeholder { width: 100% !important; height: 100% !important; background: url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1000&q=80') center/cover !important; display: block !important; }
+.tf-seccion-landing .play-btn {
+  position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%,-50%) !important; z-index: 2 !important;
+  width: 70px !important; height: 70px !important; border: 2px solid rgba(240,237,230,.65) !important; border-radius: 50% !important;
+  display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; background: rgba(18,16,14,.45) !important; backdrop-filter: blur(4px) !important;
+}
+.tf-seccion-landing .vision-text { background: var(--panel) !important; display: flex !important; flex-direction: column !important; justify-content: center !important; padding: 10% !important; }
+.tf-seccion-landing .vision-box { background: var(--deep) !important; padding: 30px !important; margin-bottom: 30px !important; border-left: 3px solid var(--pearl-dim) !important; }
+.tf-seccion-landing .vision-box h3 { font-family: var(--font-d) !important; font-size: 2.5rem !important; letter-spacing: 2px !important; color: var(--pearl) !important; line-height: 1 !important; }
+.tf-seccion-landing .vision-desc { color: rgba(240,237,230,.72) !important; font-size: .94rem !important; line-height: 1.8 !important; margin-bottom: 36px !important; }
+
+/* ── S4 SERVICIOS ── */
+.tf-seccion-landing .services { position: relative !important; padding: 80px 5% !important; background: var(--dark) !important; }
+.tf-seccion-landing .sec-label { font-family: var(--font-c) !important; font-size: .72rem !important; letter-spacing: 5px !important; text-transform: uppercase !important; color: var(--pearl-dim) !important; display: block !important; margin-bottom: 12px !important; opacity: .7 !important; }
+.tf-seccion-landing .sec-title { font-family: var(--font-d) !important; font-size: clamp(2.5rem, 6vw, 4.5rem) !important; line-height: .95 !important; color: var(--pearl) !important; margin-bottom: 50px !important; }
+.tf-seccion-landing .svc-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; }
+.tf-seccion-landing .svc-card { background: var(--card-bg) !important; border: 1px solid rgba(240,237,230,0.05) !important; }
+.tf-seccion-landing .svc-card img { width: 100% !important; height: 250px !important; object-fit: cover !important; filter: brightness(.7) !important; }
+.tf-seccion-landing .svc-info { padding: 20px !important; }
+.tf-seccion-landing .svc-name { font-family: var(--font-c) !important; font-size: 1rem !important; font-weight: 700 !important; text-transform: uppercase !important; color: var(--pearl) !important; margin-bottom: 8px !important; }
+.tf-seccion-landing .svc-desc { font-size: .8rem !important; color: var(--silver) !important; line-height: 1.5 !important; }
+
+/* ── S5 NOSOTROS ── */
+.tf-seccion-landing .about { display: grid !important; grid-template-columns: 1fr 1fr !important; min-height: 75vh !important; background: var(--deep) !important; }
+.tf-seccion-landing .about-left { padding: 10% 5% !important; display: flex !important; flex-direction: column !important; justify-content: center !important; }
+.tf-seccion-landing .about-intro { font-size: .93rem !important; color: rgba(240,237,230,.62) !important; line-height: 1.8 !important; margin-top: 20px !important; }
+.tf-seccion-landing .about-right { display: grid !important; grid-template-rows: 1fr 1fr !important; gap: 3px !important; min-height: 400px !important; }
+.tf-seccion-landing .about-img { background-size: cover !important; background-position: center !important; }
+.tf-seccion-landing .ai1 { background-image: url('https://images.unsplash.com/photo-1590496793929-36417d3117de?w=900&q=80') !important; }
+.tf-seccion-landing .ai2 { background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=900&q=80') !important; }
+
+/* ── S6 REVIEWS ── */
+.tf-seccion-landing .reviews { padding: 80px 5% !important; background: var(--panel) !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 50px !important; align-items: center !important; }
+.tf-seccion-landing .rev-right { height: 400px !important; overflow: hidden !important; mask-image: linear-gradient(to bottom,transparent 0%,black 10%,black 90%,transparent 100%) !important; -webkit-mask-image: linear-gradient(to bottom,transparent 0%,black 10%,black 90%,transparent 100%) !important; }
+.tf-seccion-landing .rev-track { display: flex !important; flex-direction: column !important; gap: 15px !important; animation: scrollUp-tf 25s linear infinite !important; }
+.tf-seccion-landing .rev-card { background: rgba(240,237,230,.03) !important; border: 1px solid rgba(240,237,230,.08) !important; padding: 25px !important; }
+
+/* ── S7 CONTACTO ── */
+.tf-seccion-landing .contact { background: var(--dark) !important; padding: 80px 5% !important; }
+.tf-seccion-landing .contact-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 50px !important; }
+.tf-seccion-landing .contact-info { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+.tf-seccion-landing .btn-wa { display: inline-flex !important; align-items: center !important; gap: 10px !important; padding: 15px 30px !important; background: var(--pearl) !important; color: var(--deep) !important; font-family: var(--font-c) !important; font-weight: 700 !important; text-decoration: none !important; margin-top: 20px !important; width: fit-content !important; }
+
+/* ── MEDIA QUERIES RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .tf-seccion-landing .svc-grid { grid-template-columns: 1fr 1fr !important; }
+  .tf-seccion-landing .contact-info { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 768px) {
+  .tf-seccion-landing .vision, .tf-seccion-landing .about, .tf-seccion-landing .reviews, .tf-seccion-landing .contact-grid { grid-template-columns: 1fr !important; }
+  .tf-seccion-landing .svc-grid { grid-template-columns: 1fr !important; }
+  
+  .tf-seccion-landing .vision-video, .tf-seccion-landing .about-right { min-height: 300px !important; }
+  .tf-seccion-landing .about-left { order: 1 !important; }
+  .tf-seccion-landing .about-right { order: 2 !important; }
+  
+  .tf-seccion-landing .hero-arrow { display: none !important; }
+  .tf-seccion-landing .hero-indicators { bottom: 20px !important; }
+}
+
+/* Animación Reveal */
+.tf-seccion-landing .reveal { opacity: 0; transition: 0.8s ease-out; transform: translateY(30px); }
+.tf-seccion-landing .reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes scrollUp-tf { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+</style>
+
+<!-- ==========================================
+     2. ESTRUCTURA HTML (CONTENIDO LIMPIO)
+     ========================================== -->
+<div class="tf-seccion-landing">
+
+  <!-- Hero Slider -->
+  <section class="hero" id="hero">
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="hero-slide s1"></div>
+      <div class="hero-slide s2"></div>
+      <div class="hero-slide s3"></div>
+      <div class="hero-slide s4"></div>
+    </div>
+    <button class="hero-arrow left" id="hPrev">←</button>
+    <button class="hero-arrow right" id="hNext">→</button>
+    <div class="hero-indicators" id="hDots"></div>
+  </section>
+
+  <!-- Franja Banner -->
+  <section class="banner">
+    <span class="banner-text">Terraflex · Construimos confianza, proyectamos futuro</span>
+  </section>
+
+  <!-- Visión -->
+  <section class="vision" id="vision">
+    <div class="vision-video">
+      <div class="video-placeholder"></div>
+      <div class="play-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M8 5v14l11-7z"></path></svg>
+      </div>
+    </div>
+    <div class="vision-text">
+      <div class="vision-box reveal">
+        <h3>Quiénes somos</h3>
+        <p>Constructora Terraflex</p>
+      </div>
+      <p class="vision-desc reveal">Constructora Terraflex S.A., fundada en Guayaquil, Ecuador, nace con la visión de convertirse en un símbolo de progreso y resiliencia.</p>
+      <a href="#contact" class="btn-wa" style="background:transparent; border:1px solid var(--pearl); color:var(--pearl)">Contáctenos</a>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="services" id="services">
+    <span class="sec-label reveal">Lo que hacemos</span>
+    <h2 class="sec-title reveal">NUESTROS SERVICIOS</h2>
+    <div class="svc-grid" id="svcGrid"></div>
+  </section>
+
+  <!-- Nosotros -->
+  <section class="about" id="about">
+    <div class="about-left">
+      <span class="sec-label reveal">Trayectoria</span>
+      <h2 class="sec-title reveal">TERRAFLEX</h2>
+      <p class="about-intro reveal">Transformamos el paisaje urbano con más de 15 años de experiencia acumulada en proyectos de alta envergadura.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-img ai1"></div>
+      <div class="about-img ai2"></div>
+    </div>
+  </section>
+
+  <!-- Reseñas / Testimonios -->
+  <section class="reviews" id="reviews">
+    <div class="rev-left">
+      <span class="sec-label">Testimonios</span>
+      <h2 class="sec-title">CLIENTES</h2>
+    </div>
+    <div class="rev-right">
+      <div class="rev-track" id="revTrack"></div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <span class="sec-label">Hablemos</span>
+        <h2 class="sec-title">CONTACTO</h2>
+        <a href="https://wa.me/593981749420" class="btn-wa">WhatsApp</a>
+      </div>
+      <div class="contact-right">
+        <div class="contact-info">
+          <div class="c-text"><strong>Dirección:</strong><br>Hurtado 205 y Machala, Guayaquil.</div>
+          <div class="c-text"><strong>Correo:</strong><br>clientes@constructoraterraflex.com</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ==========================================
+     3. DINÁMICA DE LA PÁGINA (JAVASCRIPT)
+     ========================================== -->
+<script>
+(() => {
+  // --- SLIDER DEL HERO ---
+  const hC = document.getElementById('heroCarousel');
+  const hD = document.getElementById('hDots');
+  const hSlides = document.querySelectorAll('.tf-seccion-landing .hero-slide');
+  let hCur = 0;
+
+  if(hC && hD && hSlides.length > 0) {
+    hSlides.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'hero-dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => hGo(i);
+      hD.appendChild(d);
+    });
+
+    function hGo(n){
+      hCur = (n + hSlides.length) % hSlides.length;
+      hC.style.transform = `translateX(-${hCur * 100}%)`;
+      document.querySelectorAll('.tf-seccion-landing .hero-dot').forEach((d, i) => d.classList.toggle('active', i === hCur));
+    }
+
+    setInterval(() => hGo(hCur + 1), 5000);
+    
+    const pBtn = document.getElementById('hPrev');
+    const nBtn = document.getElementById('hNext');
+    if(pBtn) pBtn.onclick = () => hGo(hCur - 1);
+    if(nBtn) nBtn.onclick = () => hGo(hCur + 1);
+  }
+
+// --- SERVICIOS (IMÁGENES 100% FUNCIONALES Y ACORDES) ---
+const svcs = [
+  { 
+    name: 'Obras Civiles Integrales', 
+    desc: 'Construcción de viviendas, edificios y obras industriales.', 
+    img: 'https://www.rjimenez-ingenieros.com/wp-content/uploads/2021/06/Proyectos-Integrales-de-Obras-Civiles1.jpg' // Estructura de edificio en construcción
+  },
+ { 
+    name: 'Infraestructura Vial y Urbanística', 
+    desc: 'Calles, pavimentos, drenajes y obras complementarias.', 
+    img: 'https://images.unsplash.com/photo-1529792083865-d23889753466?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+  },
+  { 
+    name: 'Alcantarillado Sanitario y Pluvial', 
+    desc: 'Diseño, instalación y rehabilitación de redes bajo normativa técnica.', 
+    img: 'https://media.elcomercio.com/wp-content/uploads/2022/01/1-169.jpg' // Instalación de tuberías de alcantarillado (Dominio Público)
+  }
+];
+
+  const svcG = document.getElementById('svcGrid');
+  if(svcG) {
+    svcG.innerHTML = '';
+    svcs.forEach(s => {
+      svcG.innerHTML += `<div class="svc-card">
+        <img src="${s.img}" alt="${s.name}">
+        <div class="svc-info"><div class="svc-name">${s.name}</div><div class="svc-desc">${s.desc}</div></div>
+      </div>`;
+    });
+  }
+
+  // --- DINÁMICA DE REVIEWS ---
+  const revs = [
+    { t:'Excelente trabajo, cumplieron plazos.', a:'Carlos Mendoza' },
+    { t:'Profesionalismo en cada detalle.', a:'Andrea V.' },
+    { t:'Acabados de primera clase.', a:'Roberto S.' }
+  ];
+  const rt = document.getElementById('revTrack');
+  if(rt) {
+    rt.innerHTML = '';
+    [...revs, ...revs].forEach(r => {
+      rt.innerHTML += `<div class="rev-card">
+        <div style="color:gold">★★★★★</div>
+        <p class="rev-text" style="margin: 8px 0; font-size:0.9rem;">"${r.t}"</p>
+        <div class="rev-author" style="font-weight:bold; font-size:0.8rem; color:var(--pearl-dim);">${r.a}</div>
+      </div>`;
+    });
+  }
+
+  // --- INTERSECTION OBSERVER (REVEAL ANIMACIÓN) ---
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.tf-seccion-landing .reveal').forEach(el => obs.observe(el));
+})();
+</script>
